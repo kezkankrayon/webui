@@ -8,9 +8,9 @@
   </div>
   <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxlayout.sm="column" fxLayout.xs="column">
     <div fxFlex="calc(100% - 400px)" class="padding_all">
-      <mat-input-container floatPlaceholder="never">
+      <mat-form-field floatPlaceholder="never">
         <input matInput #filter placeholder="{{'Filter' | translate}} {{title | translate}}">
-      </mat-input-container>
+      </mat-form-field>
     </div>
 
     <mat-paginator fxFlex="auto" [length]="currentRows.length" [pageSize]="paginationPageSize" [pageSizeOptions]="paginationPageSizeOptions" [pageIndex]="paginationPageIndex" (page)="paginationUpdate($event)">

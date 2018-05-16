@@ -33,7 +33,7 @@ except ImportError:
 xpaths = {
           'navAccount': '//*[@id="nav-1"]/div/a[1]',
           'submenuGroup': '//*[@id="1-0"]',
-          'newGroupName': '//*[@id="bsdgrp_group"]/mat-input-container/div/div[1]/div/input',
+          'newGroupName': '//*[@id="bsdgrp_group"]/mat-form-field/div/div[1]/div/input',
           'fabTrigger': '//*[@id="myFab"]/div/smd-fab-trigger/button',
           'fabAction': '//*[@id="add_action_button"]/span/mat-icon',
           'saveButton': '//*[@id="save_button"]',

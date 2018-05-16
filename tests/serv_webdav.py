@@ -32,8 +32,8 @@ except ImportError:
 xpaths = { 'navService': '//*[@id="nav-8"]/div/a[1]',
            'turnoffConfirm': '//*[contains(text(), "OK")]',
            'configButton' : '/html/body/app-root/app-admin-layout/mat-sidenav-container/mat-sidenav-content/div/services/div/div[17]/entity-card/div[1]/div/mat-card[1]/div/div[2]/div[3]/button',
-           'webdavPassword' : '//*[@id="webdav_password"]/mat-input-container/div/div[1]/div/input',
-           'webdavPassword2' : '//*[@id="webdav_password2"]/mat-input-container/div/div[1]/div/input'
+           'webdavPassword' : '//*[@id="webdav_password"]/mat-form-field/div/div[1]/div/input',
+           'webdavPassword2' : '//*[@id="webdav_password2"]/mat-form-field/div/div[1]/div/input'
          }
 
 

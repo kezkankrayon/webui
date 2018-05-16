@@ -1,5 +1,5 @@
 <div id="{{config.name}}" class="dynamic-field form-input" [formGroup]="group" [ngClass]="fieldShow" [class.has-tooltip]="config.tooltip" *ngIf="!config.isHidden">
-	<mat-input-container class="full-width" *ngIf="config.inputType != 'file' else elseBlock">
+	<mat-form-field class="full-width" *ngIf="config.inputType != 'file' else elseBlock">
 		<input matInput [type]="config.inputType ? config.inputType : 'text'"
 			[placeholder]="config.placeholder | translate"
 			[attr.value]="config.value"
@@ -8,7 +8,7 @@
 			[required]="config.required"
 			[max]="config.max"
 			[min]="config.min">
-	</mat-input-container>
+	</mat-form-field>
 	<ng-template #elseBlock>
 		<span>{{config.placeholder | translate}}</span>
 		<input type="file" id="fileInput" (change)="changeListener($event)"/>

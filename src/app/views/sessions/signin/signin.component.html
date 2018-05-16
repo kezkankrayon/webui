@@ -12,22 +12,22 @@
           </div>
           <form #signinForm="ngForm" (ngSubmit)="signin()">
             <div class="">
-              <mat-input-container class="full-width">
+              <mat-form-field class="full-width">
                 <input matInput name="username" required [(ngModel)]="signinData.username" #username="ngModel" placeholder="{{'Username' | translate}}" value="">
                 <mat-error *ngIf="username.errors && (username.dirty || username.touched) && (username.errors.required)">
                   <span *ngIf="!failed">{{"Please enter your username" | translate}}</span>
                   <span *ngIf="failed">{{"Please enter your username again" | translate}}</span>
                 </mat-error>
-              </mat-input-container>
+              </mat-form-field>
             </div>
             <div class="">
-              <mat-input-container class="full-width">
+              <mat-form-field class="full-width">
                 <input type="password" name="password" required matInput [(ngModel)]="signinData.password" #password="ngModel" placeholder="{{'Password' | translate}}" value="">
                 <mat-error *ngIf="password.errors && (password.dirty || password.touched) && (password.errors.required)">
                     <span *ngIf="!failed">{{"Please enter your password" | translate}}</span>
                     <span *ngIf="failed">{{"Please enter your password again" | translate}}</span>
                 </mat-error>
-              </mat-input-container>
+              </mat-form-field>
             </div>
             <button name="signin_button" mat-raised-button class="mat-accent full-width mb-1" [disabled]="username.errors || password.errors">{{"Sign in" | translate}}</button>
           </form>

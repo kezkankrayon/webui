@@ -29,7 +29,7 @@ try:
 except ImportError:
     import unittest
 
-xpaths = { 'outgoingMail' : '//*[@id="em_outgoingserver"]/mat-input-container/div/div[1]/div/input',
+xpaths = { 'outgoingMail' : '//*[@id="em_outgoingserver"]/mat-form-field/div/div[1]/div/input',
            'navSystem' : '//*[@id="nav-2"]/div/a[1]',
            'submenuEmail' : '//*[@id="2-4"]'
          }

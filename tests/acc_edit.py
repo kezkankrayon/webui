@@ -78,7 +78,7 @@ class edit_test(unittest.TestCase):
             #call edit funtion on the userNAS
             self.edit("user", newusername)
             # get the ui element
-            ui_email=driver.find_element_by_xpath('//*[@id="email"]/mat-input-container/div/div[1]/div/input')
+            ui_email=driver.find_element_by_xpath('//*[@id="email"]/mat-form-field/div/div[1]/div/input')
             # get the weather data
             email_data=ui_email.get_attribute('value')
             print ("the email for user " + newusername + " is " + email_data)

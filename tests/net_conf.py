@@ -31,8 +31,8 @@ except ImportError:
 
 xpaths = { 'navNetwork' : '//*[@id="nav-4"]/div/a[1]',
            'submenuNetworkconfig' : '//*[@id="4-0"]',
-           'nameserver1' : '//*[@id="gc_nameserver1"]/mat-input-container/div/div[1]/div/input',
-           'nameserver2' : '//*[@id="gc_nameserver2"]/mat-input-container/div/div[1]/div/input',
+           'nameserver1' : '//*[@id="gc_nameserver1"]/mat-form-field/div/div[1]/div/input',
+           'nameserver2' : '//*[@id="gc_nameserver2"]/mat-form-field/div/div[1]/div/input',
            'buttonSave' : '//*[@id="save_button"]'
          }
 

@@ -2,13 +2,13 @@
 	<div class="top">
 		<label>{{ config.placeholder | translate }}</label>
 		<tooltip *ngIf="config.tooltip" [message]="config.tooltip"></tooltip>
-		<mat-input-container class="full-width" style="display:none">
+		<mat-form-field class="full-width" style="display:none">
 			<input matInput [type]="config.inputType ? config.inputType : 'text'"
 				[placeholder]="config.placeholder"
 				[attr.value]="config.value"
 				[formControlName]="config.name"
 				>
-		</mat-input-container>
+		</mat-form-field>
 	</div>
 		<table>
 			<tr>

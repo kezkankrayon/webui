@@ -6,8 +6,8 @@
     <p> Last Scrub Run on: {{scrub_msg}} </p>
   </div>
   <p> Automatic scrub interval (in days)</p>
-  <mat-input-container floatPlaceholder="never">
+  <mat-form-field floatPlaceholder="never">
     <input matInput [value]="scrub_interval" #scrubIntervalEvent>
-  </mat-input-container>
+  </mat-form-field>
 </mat-card>
 <entity-table [title]="title" [conf]="this"></entity-table>

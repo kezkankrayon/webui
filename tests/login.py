@@ -31,8 +31,8 @@ try:
 except ImportError:
     import unittest
 
-xpaths = {'usernameTxtBox': '/html/body/app-root/app-auth-layout/app-signin/div/div/mat-card/mat-card-content/div[1]/form/div[1]/mat-input-container/div/div[1]/div/input',
-          'passwordTxtBox': '/html/body/app-root/app-auth-layout/app-signin/div/div/mat-card/mat-card-content/div[1]/form/div[2]/mat-input-container/div/div[1]/div/input',
+xpaths = {'usernameTxtBox': '/html/body/app-root/app-auth-layout/app-signin/div/div/mat-card/mat-card-content/div[1]/form/div[1]/mat-form-field/div/div[1]/div/input',
+          'passwordTxtBox': '/html/body/app-root/app-auth-layout/app-signin/div/div/mat-card/mat-card-content/div[1]/form/div[2]/mat-form-field/div/div[1]/div/input',
           'submitButton': '/html/body/app-root/app-auth-layout/app-signin/div/div/mat-card/mat-card-content/div[1]/form/button'
           }
 
