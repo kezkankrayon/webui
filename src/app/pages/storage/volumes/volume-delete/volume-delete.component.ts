@@ -15,6 +15,8 @@ import { AppLoaderService } from '../../../../services/app-loader/app-loader.ser
 import { DialogService } from 'app/services/dialog.service';
 import { T } from '../../../../translate-marker';
 import { Validators } from '@angular/forms';
+import { DownloadKeyModalDialog } from '../../../../components/common/dialog/downloadkey/downloadkey-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-volume-delete',
@@ -53,7 +55,13 @@ export class VolumeDeleteComponent implements Formconfiguration {
       validation: [Validators.required],
       required: true
 
+    }, {
+      type: '',
+      name: 'Here it is',
+      label: 'Whatevs',
+      placeholder: 'WARNING: Etc.'
     }
+
   ];
 
   resourceTransformIncomingRestData(data: any): any {
@@ -69,7 +77,8 @@ export class VolumeDeleteComponent implements Formconfiguration {
     protected _injector: Injector,
     protected _appRef: ApplicationRef,
     protected dialogService: DialogService,
-    protected loader: AppLoaderService
+    protected loader: AppLoaderService,
+    public mdDialog: MatDialog
   ) {
 
   }
@@ -109,8 +118,50 @@ export class VolumeDeleteComponent implements Formconfiguration {
 
   }
 
+  public custActions: Array<any> = [
+    {
+      'id' : 'download_key',
+      name : T('Download Key'),
+      function : () => { 
+        this.mdDialog.open(DownloadKeyModalDialog, { disableClose: true });
+        
+    },
+  }
+  ];
+
 }
 
 
+// public custActions: Array<any> = [
+//   {
+//     id : 'basic_mode',
+//     name : T('Basic Mode'),
+//     function : () => { this.isBasicMode = !this.isBasicMode; }
+//   },
+//   {
+//     'id' : 'advanced_mode',
+//     name : T('Advanced Mode'),
+//     function : () => { this.isBasicMode = !this.isBasicMode; }
+//   }
+// ];
 
+// constructor(protected router: Router) {}
+
+// isCustActionVisible(actionId: string) {
+//   if (actionId == 'advanced_mode' && this.isBasicMode == false) {
+//     return false;
+//   } else if (actionId == 'basic_mode' && this.isBasicMode == true) {
+//     return false;
+//   }
+//   return true;
+// }
+
+// actions.push({
+//   label: T("Download Encrypt Key"),
+//   onClick: (row1) => {
+//     const dialogRef = this.mdDialog.open(DownloadKeyModalDialog, { disableClose: true });
+//     dialogRef.componentInstance.volumeId = row1.id;
+
+//   }
+// });
 
