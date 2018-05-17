@@ -49,7 +49,6 @@ export interface ZfsPoolData {
   children?: any[];
   dataset_data?: any;
   actions?: any[];
-  comments?: string;
   volumesListTableConfig?: VolumesListTableConfig;
 
 }
@@ -408,7 +407,6 @@ export class VolumesListTableConfig implements InputTableConf {
 
     for (let i = 0; i < data.length; i++) {
       const dataObj = data[i];
-      console.log(data);
 
       dataObj.nodePath = dataObj.mountpoint;
 
@@ -445,17 +443,13 @@ export class VolumesListTableConfig implements InputTableConf {
       dataObj.compression = "";
       dataObj.readonly = "";
       dataObj.dedub = "";
-      dataObj.comments = "";
 
       if (dataObj.type === 'dataset' && typeof (dataObj.dataset_data) !== "undefined" && typeof (dataObj.dataset_data.data) !== "undefined") {
-        console.log('ok 1');
         for (let k = 0; k < dataObj.dataset_data.data.length; k++) {
           if (dataObj.dataset_data.data[k].name === dataObj.nodePath) {
-            console.log('okay 2');
             dataObj.compression = dataObj.dataset_data.data[k].compression;
             dataObj.readonly = dataObj.dataset_data.data[k].readonly;
             dataObj.dedup = dataObj.dataset_data.data[k].dedup;
-            dataObj.comments = dataObj.dataset_data.data[k].comments;
           }
 
         }

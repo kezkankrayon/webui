@@ -31,6 +31,9 @@ export class VolumeDeleteComponent implements Formconfiguration {
   isNew = false;
   isEntity = true;
 
+  public volumeId: any;
+  public volumeEncryptKey: any;
+
   fieldConfig: FieldConfig[] = [
     {
       type: 'input',
@@ -56,19 +59,22 @@ export class VolumeDeleteComponent implements Formconfiguration {
       required: true
 
     }, {
-      type: '',
-      name: 'Here it is',
-      label: 'Whatevs',
-      placeholder: 'WARNING: Etc.'
+      type: 'paragraph',
+      name: 'detach_warning',
+      paraText: "WARNING: When you detach a pool, the data becomes unavailable. \
+      If your pool is encrypted, and you you do not have \
+      a passphrase, your data will be permanently unrecoverable! Be sure that you  \
+      understand the risks, and (for encrypted pools) take a moment to download your recovery key!"
     }
 
   ];
 
   resourceTransformIncomingRestData(data: any): any {
+    this.volumeId = data.id;
+    this.volumeEncryptKey = data.vol_encryptkey;
     return data;
   };
-
-
+  
   constructor(
     protected router: Router,
     protected route: ActivatedRoute,
@@ -79,15 +85,13 @@ export class VolumeDeleteComponent implements Formconfiguration {
     protected dialogService: DialogService,
     protected loader: AppLoaderService,
     public mdDialog: MatDialog
-  ) {
-
-  }
+  ) {}
 
   afterInit(entityForm: any) {
 
   }
 
-  customSubmit(value) {
+  customSubmit(value) { 
     this.loader.open();
     if (value.destroy === false) {
       return this.rest.delete(this.resource_name + "/" + value.name, { body: JSON.stringify({ destroy: value.destroy }) }).subscribe((restPostResp) => {
@@ -114,54 +118,23 @@ export class VolumeDeleteComponent implements Formconfiguration {
         this.dialogService.errorReport(T("Error detaching pool"), res.message, res.stack);
       });
     }
+  }
 
-
+  isCustActionVisible() {
+    if (!this.volumeEncryptKey || this.volumeEncryptKey === '') {
+      return false;
+    } 
+    return true;
   }
 
   public custActions: Array<any> = [
     {
       'id' : 'download_key',
       name : T('Download Key'),
-      function : () => { 
-        this.mdDialog.open(DownloadKeyModalDialog, { disableClose: true });
-        
-    },
-  }
+      function :  () => { 
+        const dialogRef = this.mdDialog.open(DownloadKeyModalDialog, { disableClose: true }); 
+        dialogRef.componentInstance.volumeId = this.volumeId;  
+      }
+    }
   ];
-
 }
-
-
-// public custActions: Array<any> = [
-//   {
-//     id : 'basic_mode',
-//     name : T('Basic Mode'),
-//     function : () => { this.isBasicMode = !this.isBasicMode; }
-//   },
-//   {
-//     'id' : 'advanced_mode',
-//     name : T('Advanced Mode'),
-//     function : () => { this.isBasicMode = !this.isBasicMode; }
-//   }
-// ];
-
-// constructor(protected router: Router) {}
-
-// isCustActionVisible(actionId: string) {
-//   if (actionId == 'advanced_mode' && this.isBasicMode == false) {
-//     return false;
-//   } else if (actionId == 'basic_mode' && this.isBasicMode == true) {
-//     return false;
-//   }
-//   return true;
-// }
-
-// actions.push({
-//   label: T("Download Encrypt Key"),
-//   onClick: (row1) => {
-//     const dialogRef = this.mdDialog.open(DownloadKeyModalDialog, { disableClose: true });
-//     dialogRef.componentInstance.volumeId = row1.id;
-
-//   }
-// });
-
